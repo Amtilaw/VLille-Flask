@@ -1,0 +1,41 @@
+<html>
+
+<head>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Adress</th>
+            <th>Commune</th>
+            <th>Etat</th>
+            <th>Type</th>
+            <th>Geo</th>
+            <th>NbPlaceDispo</th>
+            <th>nbVeloDispo</th>
+            <th>EtatConnexion</th>
+            <th>localisation</th>
+            <th>date</th>
+        </tr>
+         {% for i in stations %}
+            <tr><th>{{i.Id}}</th>
+            <th>{{i.nom}}</th>
+            <th>{{i.adresse}}</th>
+            <th>{{i.commune}}</th>
+            <th>{{i.etat}}</th>
+            <th>{{i.type}}</th>
+            <th>{{i.geo}}</th>
+            <th>{{i.nbPlaceDispo}}</th>
+            <th>{{i.nbVeloDispo}}</th>
+            <th>{{i.etatConnexion}}</th>
+            <th>{{i.loaclisation}}</th>
+            <th>{{i.date}}</th>
+            </tr>
+            {% endfor %}
+       
+      </table>
+    
+</body>
+</html>
