@@ -1,8 +1,8 @@
 import pymysql.cursors 
-import os
 from dotenv import dotenv_values
-from pathlib import Path
 config = dotenv_values(".env")
+
+#Utilisation du fichier .env pour les variables d'environnement
 
 USER = config.get("USER")
 PASSWORD = config.get("PASSWORD")

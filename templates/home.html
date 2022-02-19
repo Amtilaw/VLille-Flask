@@ -57,11 +57,11 @@
     <header>
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand">Ville</a>
+              <a class="navbar-brand" href="/">Ville</a>
                 <button class="btn btn-outline-success" type="submit">UpdateDbFromApi</button>
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+              <form class="d-flex" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-outline-success">Search</button>
               </form>
             </div>
           </nav> 
@@ -72,8 +72,9 @@
         <iframe
   width="450"
   height="250"
-  frameborder="0" style="border:0"
+  style="border:0"
   id="googleMap"
+  title="iframeGoogle"
   src="
   &zoom=18
   &maptype=satellite" allowfullscreen>
@@ -100,17 +101,17 @@
          {% for i in stations %}
             <tr onclick="showDetails('{{i.localisation}}')" class="rowTable">
             <th scope="row">{{i.Id}}</th>
-            <th>{{i.nom}}</th>
-            <th>{{i.adresse}}</th>
-            <th>{{i.commune}}</th>
-            <th>{{i.etat}}</th>
-            <th>{{i.type}}</th>
-            <th>{{i.geo}}</th>
-            <th>{{i.nbPlaceDispo}}</th>
-            <th>{{i.nbVeloDispo}}</th>
-            <th>{{i.etatConnexion}}</th>
-            <th>{{i.loaclisation}}</th>
-            <th>{{i.date}}</th>
+            <th scope="row">{{i.nom}}</th>
+            <th scope="row">{{i.adresse}}</th>
+            <th scope="row">{{i.commune}}</th>
+            <th scope="row">{{i.etat}}</th>
+            <th scope="row">{{i.type}}</th>
+            <th scope="row">{{i.geo}}</th>
+            <th scope="row">{{i.nbPlaceDispo}}</th>
+            <th scope="row">{{i.nbVeloDispo}}</th>
+            <th scope="row">{{i.etatConnexion}}</th>
+            <th scope="row">{{i.loaclisation}}</th>
+            <th scope="row">{{i.date}}</th>
             </tr>
             {% endfor %}
        
@@ -124,9 +125,8 @@
 
 
 function showDetails(str){
-document.getElementById("googleMap").src = `https://www.google.com/maps/embed/v1/view?key=AIzaSyAd4I7RM-VAkaZEF1Hr2GBC5P1g9iO-vU4&center=${str}&zoom=22&maptype=satellite`;
+document.getElementById("googleMap").src = `https://www.google.com/maps/embed/v1/view?key={{api_key}}&center=${str}&zoom=22&maptype=satellite`;
 }
-
 
 /* eslint-env browser */
 /* global document */

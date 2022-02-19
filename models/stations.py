@@ -12,7 +12,7 @@ def create_table_station():
         # Closez la connexion (Close connection).      
         bdd.close_connection()
 
-def insert_station_bdd(rowStation):
+def insert_station_bdd(row_station):
 
     bdd = Bdd()
     try:  
@@ -21,7 +21,7 @@ def insert_station_bdd(rowStation):
         # SQL 
         sql = "INSERT INTO `station`(`Id`, `nom`, `adresse`, `commune`, `etat`, `type`, `geo`, `nbPlaceDispo`, `nbVeloDispo`, `etatConnexion`, `localisation`, `date`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" 
         # Exécutez la requête (Execute Query).
-        cursor.execute(sql, (rowStation[0],rowStation[1],rowStation[2],rowStation[3],rowStation[4],rowStation[5],rowStation[6],rowStation[7],rowStation[8],rowStation[9],rowStation[10],rowStation[11])) 
+        cursor.execute(sql, (row_station[0],row_station[1],row_station[2],row_station[3],row_station[4],row_station[5],row_station[6],row_station[7],row_station[8],row_station[9],row_station[10],row_station[11])) 
         print ("cursor.description: ", cursor.description) 
         connection.commit()
           
@@ -40,10 +40,29 @@ def get_all_stations():
             sql = "SELECT * FROM `station` WHERE 1" 
             # Exécutez la requête (Execute Query).
             cursor.execute(sql) 
-            allRow = []
+            all_row = []
             for row in cursor:
-                allRow.append(row)
-            return allRow
+                all_row.append(row)
+            return all_row
+    finally:
+        # Closez la connexion (Close connection).      
+        bdd.close_connection()
+
+def get_by_name_or_adress_stations(str):
+    bdd = Bdd()
+    try:  
+        cursor = bdd.get_connection().cursor()
+        # SQL 
+        sql = "SELECT * FROM station WHERE nom LIKE '%"+ str +"%' OR adresse LIKE '%"+ str +"%'" 
+        # Exécutez la requête (Execute Query).
+        cursor.execute(sql)
+        print ("cursor.description: ", cursor.description) 
+        print() 
+        all_row = []
+        for row in cursor:
+            print(row) 
+            all_row.append(row)
+        return all_row
     finally:
         # Closez la connexion (Close connection).      
         bdd.close_connection()

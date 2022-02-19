@@ -1,5 +1,5 @@
 import csv
-from flask import redirect, render_template
+from flask import redirect
 from models import stations
 
 def view():
@@ -16,7 +16,7 @@ def parse_file():
     with open('vlille-realtime.csv', newline='') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=';', quotechar='|')
         for row in spamreader:
-            stations.insert_station_bdd(row)
+            stations.insert_station_bdd(row)                                        #Insertion d'une table station
             rows.append(row)
         return rows
         
