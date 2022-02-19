@@ -11,7 +11,6 @@ app = Flask(__name__)
 #Affiche sur une map la localisation dans les détailles
 #Nav bar --> html/css
 #Recherche stations avec un champ
-#Liste stations avec pagination
 
 API_URL = "https://opendata.lillemetropole.fr/api/records/1.0/search/?dataset=vlille-realtime&q=&rows=20&facet=libelle&facet=nom&facet=commune&facet=etat&facet=type&facet=etatconnexion"
 

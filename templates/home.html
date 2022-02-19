@@ -45,6 +45,10 @@
     position: absolute;
     margin-top: 10%;
 }
+.rowTable:hover {
+  background-color: aquamarine;
+  cursor: pointer;
+}
 
     </style>
 </head>
@@ -94,7 +98,7 @@
             <th scope="col">date</th>
         </tr></thead>
          {% for i in stations %}
-            <tr onclick="showDetails('{{i.loaclisation}}')">
+            <tr onclick="showDetails('{{i.localisation}}')" class="rowTable">
             <th scope="row">{{i.Id}}</th>
             <th>{{i.nom}}</th>
             <th>{{i.adresse}}</th>
